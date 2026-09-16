@@ -7,7 +7,7 @@
             $this->amount = $amount;
         }
         
-        abstract public function processPayment(): string;
+        abstract  function processPayment(): string;
     }
 
 
