@@ -30,7 +30,7 @@ $marcus = new Trainer("Marcus Lee", "marcus@fitness.test");
 
 // test case 1: create classes and confirm three bookings
 echo "test case 1: normal booking workflow<br><br>";
-$beginnerYoga = new FitnessClass("Beginner Yoga", $aisha, 18.00, 3);
+$beginnerYoga = new FitnessClass("Beginner Yoga", $aisha, 18.00, 0);
 $strengthFundamentals = new FitnessClass("Strength Fundamentals", $marcus, 25.00, 2);
 $hiitExpress = new FitnessClass("HIIT Express", $marcus, 22.50, 4);
 
