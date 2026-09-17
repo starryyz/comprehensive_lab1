@@ -1,20 +1,14 @@
 <?php
-// ellie
-class Member{
-    protected string $name;
-    protected string $email;
+require_once "User.php";
 
+class Member extends User{
     public function __construct(string $name, string $email){
-        $this->name = $name;
-        $this->email = $email;
+        parent::__construct($name, $email);
     }
 
     public function bookClass(): string{
         return "Member {$this->name} booked a class.";
     }
 
-    public function viewProfile(): string{
-        return "Name: {$this->name}, Email: {$this->email}";
-    }
 }
 ?>
