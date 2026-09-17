@@ -1,5 +1,5 @@
 <?php
-
+// star 
 abstract class Payment
 {
     protected float $amount;

@@ -1,5 +1,5 @@
 <?php
-
+// star
 require_once "Payment.php";
 
 class PayPalPayment extends Payment
