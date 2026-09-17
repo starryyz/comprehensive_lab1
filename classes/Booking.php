@@ -19,6 +19,7 @@ class Booking
             return true;
         }
         if (!$this->fitnessClass->reserveSpot()) {
+            $this->bookingStatus = 'Error: class is full';
             return false;
         }
         $this->bookingStatus = 'Confirmed';

@@ -42,6 +42,13 @@ $jordanConfirmed = $jordanBooking->confirmBooking();
 $priyaConfirmed = $priyaBooking->confirmBooking();
 $luisConfirmed = $luisBooking->confirmBooking();
 
+if (!$jordanConfirmed) {
+    echo "error: unable to book beginner yoga for jordan miles because the class is full<br>";
+}
+if (!$luisConfirmed) {
+    echo "error: unable to book beginner yoga for luis rivera because the class is full<br>";
+}
+
 // show only the member, class, and payment type for this test case
 echo "jordan miles - beginner yoga - credit card<br>";
 echo "priya shah - strength fundamentals - paypal<br>";
