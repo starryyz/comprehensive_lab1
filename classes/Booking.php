@@ -18,11 +18,9 @@ class Booking
         if ($this->bookingStatus === 'Confirmed') {
             return true;
         }
-
         if (!$this->fitnessClass->reserveSpot()) {
             return false;
         }
-
         $this->bookingStatus = 'Confirmed';
         return true;
     }

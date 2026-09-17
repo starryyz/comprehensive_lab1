@@ -17,49 +17,40 @@ class FitnessClass
         if ($price < 0 || $capacity < 0) {
             throw new InvalidArgumentException('Price and capacity cannot be negative.');
         }
-
         $this->className = $className;
         $this->trainer = $trainer;
         $this->price = $price;
         $this->capacity = $capacity;
         $this->availableSpots = $capacity;
     }
-
     public function isAvailable(): bool
     {
         return $this->availableSpots > 0;
     }
-
     public function reserveSpot(): bool
     {
         if (!$this->isAvailable()) {
             return false;
         }
-
         $this->availableSpots--;
         return true;
     }
-
     public function getClassName(): string
     {
         return $this->className;
     }
-
     public function getTrainer(): Trainer
     {
         return $this->trainer;
     }
-
     public function getPrice(): float
     {
         return $this->price;
     }
-
     public function getCapacity(): int
     {
         return $this->capacity;
     }
-
     public function getAvailableSpots(): int
     {
         return $this->availableSpots;
