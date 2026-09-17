@@ -38,16 +38,25 @@ $jordanBooking = new Booking($jordan, $beginnerYoga);
 $priyaBooking = new Booking($priya, $strengthFundamentals);
 $luisBooking = new Booking($luis, $beginnerYoga);
 
-$jordanBooking->confirmBooking();
-$priyaBooking->confirmBooking();
-$luisBooking->confirmBooking();
+$jordanConfirmed = $jordanBooking->confirmBooking();
+$priyaConfirmed = $priyaBooking->confirmBooking();
+$luisConfirmed = $luisBooking->confirmBooking();
 
-showBookingResult($jordanBooking);
-showBookingResult($priyaBooking);
-showBookingResult($luisBooking);
-echo "beginner yoga final spots: " . $beginnerYoga->getAvailableSpots() . "<br>";
-echo "strength fundamentals final spots: " . $strengthFundamentals->getAvailableSpots() . "<br>";
-echo "hiit express final spots: " . $hiitExpress->getAvailableSpots() . "<br><br>";
+// show only the member, class, and payment type for this test case
+echo "jordan miles - beginner yoga - credit card<br>";
+echo "priya shah - strength fundamentals - paypal<br>";
+echo "luis rivera - beginner yoga - paypal<br><br>";
+
+// show the expected final state for the three fitness classes
+echo "expected final state<br>";
+echo "beginner yoga: starting spots: 3, confirmed bookings: "
+    . ($jordanConfirmed + $luisConfirmed)
+    . ", final spots: " . $beginnerYoga->getAvailableSpots() . "<br>";
+echo "strength fundamentals: starting spots: 2, confirmed bookings: "
+    . ($priyaConfirmed ? 1 : 0)
+    . ", final spots: " . $strengthFundamentals->getAvailableSpots() . "<br>";
+echo "hiit express: starting spots: 4, confirmed bookings: 0, final spots: "
+    . $hiitExpress->getAvailableSpots() . "<br><br>";
 
 // test case 2: confirm the last available spot
 echo "test case 2: last available spot<br><br>";
@@ -102,14 +111,16 @@ $strength = new FitnessClass("Strength", $marcus, 25.00, 5);
 
 $yogaBookingOne = new Booking($jordan, $yoga);
 $yogaBookingTwo = new Booking($priya, $yoga);
-$yogaBookingOne->confirmBooking();
-$yogaBookingTwo->confirmBooking();
+$yogaBookingOneConfirmed = $yogaBookingOne->confirmBooking();
+$yogaBookingTwoConfirmed = $yogaBookingTwo->confirmBooking();
 
-echo "yoga spots: " . $yoga->getAvailableSpots() . "<br>";
-echo "strength spots: " . $strength->getAvailableSpots() . "<br><br>";
+echo "yoga: starting spots: 5, confirmed bookings: "
+    . ($yogaBookingOneConfirmed + $yogaBookingTwoConfirmed)
+    . ", final spots: " . $yoga->getAvailableSpots() . "<br>";
+
 
 // test case 6: send both payment objects to the same function
-echo "test case 6: payment polymorphism<br><br>";
+echo "<br>test case 6: payment polymorphism<br><br>";
 $creditCardPayment = new CreditCardPayment(25.00, "TEST-CARD-4242");
 $payPalPayment = new PayPalPayment(25.00, "paypal-test@example.com");
 
