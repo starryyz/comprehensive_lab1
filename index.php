@@ -89,7 +89,8 @@ $noahBooking = new Booking(
     new Member("Noah Williams", "noah@fitness.test"),
     $advancedPilates
 );
-$noahBooking->confirmBooking();
+$noahPayment = new PayPalPayment($noahBooking->getPaymentAmount(), "noah@fitness.test");
+$noahBooking->confirmBooking($noahPayment);
 showBookingResult($noahBooking);
 echo "<br>";
 

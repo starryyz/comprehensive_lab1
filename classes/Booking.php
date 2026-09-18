@@ -13,7 +13,7 @@ class Booking
         $this->bookingStatus = 'Pending';
         $this->paymentAmount = $fitnessClass->getPrice();
     }
-    public function confirmBooking(): bool
+    public function confirmBooking(?Payment $payment = null): bool
     {
         if ($this->bookingStatus === 'Confirmed') {
             return true;
@@ -21,6 +21,9 @@ class Booking
         if (!$this->fitnessClass->reserveSpot()) {
             $this->bookingStatus = 'Error: class is full';
             return false;
+        }
+        if ($payment !== null) {
+            $payment->processPayment();
         }
         $this->bookingStatus = 'Confirmed';
         return true;
